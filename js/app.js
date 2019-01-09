@@ -1,4 +1,5 @@
 'use strict';
+
 function Horn(hornObject){
   this.image_url = hornObject.image_url;
   this.title = hornObject.title;
@@ -6,6 +7,7 @@ function Horn(hornObject){
   this.keyword = hornObject.keyword;
   this.horns = hornObject.horns;
 }
+let dropdownList = [];
 
 Horn.allHorns = [];
 
@@ -36,26 +38,31 @@ Horn.readJson = () => {
 }
 
 Horn.loadHorns = () => {
-  Horn.allHorns.forEach(horn => horn.render());
+  Horn.allHorns.forEach(horn => {
+    horn.render(); 
+  });
+  Horn.loadOptions();
 };
 
 $(() => Horn.readJson());
 
-Horn.loadOptions = () => {
-  let keyArr = [];
-  Horn.allHorns.forEach( horn => {
-    console.log(keyArr.includes(horn.keyword));
-    if (keyArr.includes(horn.keyword) === false ){
+Horn.loadOptions = function() { 
+  Horn.allHorns.forEach(horn => {
+    if (!dropdownList.includes(horn.keyword)){
       console.log(horn.keyword);
-      keyArr.push(horn.keyword);
+      dropdownList.push(horn.keyword);
     }
-  });
-  console.log(keyArr);
-  keyArr.forEach( key => {
-    $('#horn-select').append('<option></option>');
-    $('option').attr('value', key).text(key);
-  });
+  })
+  console.log(dropdownList);
+  dropdownList.forEach(element => {
+    $('#horn-select').append('<option class = "optionClone"></option>');
+    const optionTag = $('option[class="optionClone"]');
+    optionTag.attr('value', element)
+    optionTag.text(element);
+    optionTag.removeClass('optionClone');
+  })
 };
 
-Horn.loadOptions();
+
+
 
