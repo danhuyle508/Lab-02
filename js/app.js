@@ -25,6 +25,7 @@ Horn.prototype.render = function() {
   //p
   $hornClone.find('p').text(this.description);
   $hornClone.removeClass('clone');
+  $hornClone.addClass(this.keyword);
 }
 
 Horn.readJson = () => {
@@ -49,11 +50,9 @@ $(() => Horn.readJson());
 Horn.loadOptions = function() { 
   Horn.allHorns.forEach(horn => {
     if (!dropdownList.includes(horn.keyword)){
-      console.log(horn.keyword);
       dropdownList.push(horn.keyword);
     }
   })
-  console.log(dropdownList);
   dropdownList.forEach(element => {
     $('#horn-select').append('<option class = "optionClone"></option>');
     const optionTag = $('option[class="optionClone"]');
@@ -63,6 +62,10 @@ Horn.loadOptions = function() {
   })
 };
 
-
+$('select[id="horn-select"]').on('change', function () {
+  let $selection = $(this).val();
+  $('section').hide();
+  $(`section[class="${$selection}"]`).show();
+})
 
 
