@@ -36,26 +36,21 @@ Horn.readJson = () => {
 }
 
 Horn.loadHorns = () => {
-  Horn.allHorns.forEach(horn => horn.render());
+  Horn.allHorns.forEach(horn => {
+    horn.render(); 
+    horn.loadOptions(); 
+  });
 };
 
 $(() => Horn.readJson());
 
-Horn.loadOptions = () => {
-  let keyArr = [];
-  Horn.allHorns.forEach( horn => {
-    console.log(keyArr.includes(horn.keyword));
-    if (keyArr.includes(horn.keyword) === false ){
-      console.log(horn.keyword);
-      keyArr.push(horn.keyword);
-    }
-  });
-  console.log(keyArr);
-  keyArr.forEach( key => {
-    $('#horn-select').append('<option></option>');
-    $('option').attr('value', key).text(key);
-  });
+Horn.prototype.loadOptions = function() { 
+  $('#horn-select').append('<option class = "optionClone"></option>');
+  const optionTag = $('option[class="optionClone"]');
+  optionTag.attr('value', this.keyword)
+  optionTag.text(this.keyword);
+  optionTag.removeClass('optionClone');
 };
 
-Horn.loadOptions();
+
 
