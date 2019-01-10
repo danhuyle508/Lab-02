@@ -38,6 +38,16 @@ Horn.readJson = () => {
     .then(Horn.loadHorns);
 }
 
+Horn.readJson2 = () => {
+  $.get('page-2.json', 'json')
+    .then(data =>{
+      data.forEach( horn =>{
+        Horn.allHorns.push( new Horn(horn));
+      })
+    })
+    .then(Horn.loadHorns);
+}
+
 Horn.loadHorns = () => {
   Horn.allHorns.forEach(horn => {
     horn.render(); 
@@ -68,4 +78,10 @@ $('select[id="horn-select"]').on('change', function () {
   $(`section[class="${$selection}"]`).show();
 })
 
+$('#page-1').on('click', function () {
+  Horn.readJson();
+})
 
+$('#page-2').on('click', function () {
+  Horn.readJson2();
+})
