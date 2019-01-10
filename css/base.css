@@ -1,7 +1,7 @@
 * {
-  outline: dotted 3px red;
+  /* outline: dotted 3px red; */
 }
 
-body * {
-  display: flex;
+main * {
+ display: flex;
 }
