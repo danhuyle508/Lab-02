@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <script id = "horn-template" type = "text/x-handlebars-template">
-      <div>  
+      <div class = "{{keyword}}">
         <h2>{{ title }}</h2>
-        <img src= {{ image_url }} alt="">
+        <img src= "{{ image_url }}" alt="{{title}}">
         <p>{{ description }}</p>
       </div>  
     </script>
@@ -23,6 +23,8 @@
       </select>
       <button id="page-1">Page 1</button>
       <button id="page-2">Page 2</button>
+      <button id="sort-title">Sort by Title</button>
+      <button id="sort-horns">Sort by Number of Horns</button>
     </header>
     <main>
       <section id="photo-template">

@@ -35,24 +35,24 @@ _______________________________________________________
 
 Number and name of feature: Pagination
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 1.5 hours
 
-Start time: 
+Start time: 9:00
 
-Finish time: 
+Finish time: 10:40
 
-Actual time needed to complete:
+Actual time needed to complete: 1 hr 40 min
 _______________________________________________________
 
 Number and name of feature: Templating
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 1 hour
 
-Start time: 
+Start time: 10:45
 
-Finish time: 
+Finish time: 12:30
 
-Actual time needed to complete:
+Actual time needed to complete: 1 hr 45 min
 _______________________________________________________
 
 Number and name of feature: Styling with Flexbox
@@ -68,10 +68,10 @@ _______________________________________________________
 
 Number and name of feature: Sort the Images
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 20 minutes
 
-Start time: 
+Start time: 12:30
 
-Finish time: 
+Finish time: 1:00
 
-Actual time needed to complete:
+Actual time needed to complete: 30 minutes

@@ -1,3 +1,7 @@
+* {
+  outline: dotted 3px red;
+}
+
 body * {
-  margin: 1%;
+  display: flex;
 }
