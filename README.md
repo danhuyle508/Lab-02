@@ -57,13 +57,13 @@ _______________________________________________________
 
 Number and name of feature: Styling with Flexbox
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 30 minutes
 
-Start time: 
+Start time: 1:00pm
 
-Finish time: 
+Finish time: 1:30pm
 
-Actual time needed to complete:
+Actual time needed to complete:30 minutes
 _______________________________________________________
 
 Number and name of feature: Sort the Images
