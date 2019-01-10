@@ -18,29 +18,6 @@ Horn.prototype.toHtml = function(){
 
   return templateRender(this);
 }
-Horn.allHorns.forEach(hornObject =>{
-  $('#photo-template').append(hornObject.toHtml());
-})
-
-
-//renders each horn to page with descrptions
-// Horn.prototype.render = function() {
-//   $('main').append('<section class = "clone"></section>');
-//   const $hornClone = $('section[class="clone"]');
-
-//   const $hornHtml = $('#photo-template').html();
-//   $hornClone.html($hornHtml);
-
-//   //h2
-//   //$hornClone.find('h2').text(this.title);
-//   //img
-//   //$hornClone.find('img').attr('src', this.image_url);
-//   //p
-//   //$hornClone.find('p').text(this.description);
-//   $hornClone.removeClass('clone');
-//   $hornClone.addClass(this.keyword);
-  
-// }
 
 //reads first JSON file then executes loading of horns and list
 Horn.readJson = () => {
@@ -48,6 +25,11 @@ Horn.readJson = () => {
     .then(data =>{
       data.forEach( horn =>{
         Horn.allHorns.push( new Horn(horn));
+      })
+      Horn.allHorns.sort( (a,b) => {
+        if (a.title < b.title) return -1;
+        else if (a.title > b.title) return 1;
+        else return 0;
       })
       Horn.allHorns.forEach(hornObject =>{
         $('#photo-template').append(hornObject.toHtml());
@@ -63,20 +45,16 @@ Horn.readJson2 = () => {
       data.forEach( horn =>{
         Horn.allHorns.push( new Horn(horn));
       })
+      Horn.allHorns.sort( (a,b) => {
+        if (a.title < b.title) return -1;
+        else if (a.title > b.title) return 1;
+        else return 0;
+      })
       Horn.allHorns.forEach(hornObject =>{
         $('#photo-template').append(hornObject.toHtml());
       })
     })
-    // .then(Horn.loadHorns);
 }
-
-//executes render and option list
-// Horn.loadHorns = () => {
-//   Horn.allHorns.forEach(horn => {
-//     horn.render(); 
-//   });
-//   Horn.loadOptions();
-// };
 
 //executes readJSON function
 $(() => Horn.readJson());
@@ -98,14 +76,6 @@ Horn.loadOptions = function() {
   })
 };
 
-//event listener for selecting keyword from option list
-$('select[id="horn-select"]').on('change', function () {
-  let $selection = $(this).val();
-  $('section').hide();
-  $(`section[class="${$selection}"]`).show();
-  console.log($selection);
-})
-
 $('#page-1').on('click', function () {
   $('select').empty();
   $('section').empty();
@@ -121,3 +91,35 @@ $('#page-2').on('click', function () {
   Horn.readJson2();
 })
 
+//event listener for selecting keyword from option list
+$('select[id="horn-select"]').on('change', function () {
+  let $selection = $(this).val();
+  $('div').hide();
+  $(`div[class="${$selection}"]`).show();
+})
+
+$('#sort-title').on('click', function () {
+  Horn.allHorns.sort( (a,b) => {
+    if (a.title < b.title) return -1;
+    else if (a.title > b.title) return 1;
+    else return 0;
+  })
+  $('select').empty();
+  Horn.loadOptions();
+  $('section').empty();
+  Horn.allHorns.forEach(hornObject =>{
+    $('#photo-template').append(hornObject.toHtml());
+  })
+})
+
+$('#sort-horns').on('click', function () {
+  Horn.allHorns.sort( (a,b) => {
+    return a.horns - b.horns;
+  })
+  $('select').empty();
+  Horn.loadOptions();
+  $('section').empty();
+  Horn.allHorns.forEach(hornObject =>{
+    $('#photo-template').append(hornObject.toHtml());
+  })
+})
